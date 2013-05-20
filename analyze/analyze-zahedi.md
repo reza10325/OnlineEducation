@@ -2,12 +2,12 @@ zahedi analyze
 ********************************
 user:
 **sabtenam
-**entekhabe dars
-**sherkat dar emtehan
-**moshahede nomarat
-**hazfe dars
-**shabake ejtemaei
-**taghyere mosahakhasat
+**kelase majazi
+**goftegooye daneshjooyan
+**anjoomanhaye takhasosi
+**porsesh va pasokh ba ostad
+**systeme eraee matlab
+**payame kelasi
 
 admin:
 **sabte dars
