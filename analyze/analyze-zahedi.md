@@ -8,3 +8,9 @@ user:
 **hazfe dars
 **shabake ejtemaei
 **taghyere mosahakhasat
+
+admin:
+**sabte dars
+**modiryate karbaran
+**tarhe azmoon + pasokh
+**
