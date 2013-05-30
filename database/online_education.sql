@@ -138,6 +138,9 @@ CREATE TABLE IF NOT EXISTS `message` (
 CREATE TABLE IF NOT EXISTS `questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `exam_id` int(11) NOT NULL,
+  `content` text COLLATE utf8_persian_ci NOT NULL,
+  `number_of_answer` int(11) NOT NULL,
+  `randomize` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `exam_id` (`exam_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
