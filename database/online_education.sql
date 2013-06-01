@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 01, 2013 at 12:51 PM
+-- Generation Time: Jun 01, 2013 at 01:41 PM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -132,7 +132,9 @@ CREATE TABLE IF NOT EXISTS `managers` (
   `username` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(32) COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `username` (`username`),
+  KEY `name` (`name`),
+  KEY `family` (`family`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -188,7 +190,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `field_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `melli_code` (`melli_code`,`email`)
+  UNIQUE KEY `melli_code` (`melli_code`,`email`),
+  UNIQUE KEY `mobile` (`mobile`),
+  KEY `name` (`name`),
+  KEY `family` (`family`),
+  KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
