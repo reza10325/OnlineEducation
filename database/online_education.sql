@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 01, 2013 at 01:41 PM
+-- Generation Time: Jun 03, 2013 at 12:51 AM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -131,8 +131,15 @@ CREATE TABLE IF NOT EXISTS `managers` (
   `family` varchar(200) COLLATE utf8_persian_ci NOT NULL,
   `username` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(32) COLLATE utf8_persian_ci NOT NULL,
+  `age` tinyint(4) NOT NULL,
+  `gender` enum('male','female') COLLATE utf8_persian_ci NOT NULL,
+  `melli_code` int(10) NOT NULL,
+  `mobile` int(11) NOT NULL,
+  `email` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  `address` text COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `melli_code` (`melli_code`,`mobile`,`email`),
   KEY `name` (`name`),
   KEY `family` (`family`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
@@ -152,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `title` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `comment` longtext COLLATE utf8_persian_ci NOT NULL,
   `date` int(10) NOT NULL,
-  `attache` text COLLATE utf8_persian_ci NOT NULL,
+  `attache` text COLLATE utf8_persian_ci,
   PRIMARY KEY (`id`),
   KEY `sender_id` (`sender_id`,`reciver_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
@@ -184,14 +191,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(200) COLLATE utf8_persian_ci NOT NULL,
   `family` varchar(200) COLLATE utf8_persian_ci NOT NULL,
   `mobile` int(11) NOT NULL,
-  `age` int(3) NOT NULL,
+  `age` tinyint(4) NOT NULL,
   `gender` enum('male','female') COLLATE utf8_persian_ci NOT NULL,
   `melli_code` int(10) NOT NULL,
   `email` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `field_id` int(11) NOT NULL,
+  `address` text COLLATE utf8_persian_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  `password` varchar(32) COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `melli_code` (`melli_code`,`email`),
   UNIQUE KEY `mobile` (`mobile`),
+  UNIQUE KEY `username` (`username`),
   KEY `name` (`name`),
   KEY `family` (`family`),
   KEY `email` (`email`)
