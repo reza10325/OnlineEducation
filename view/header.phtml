@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<?= html::loadJs() ?>
+		<?= html::loadCss() ?>
+		<script>
+			<?php 
+			if($msg = msg::getMsg())
+				print 'alert("' . $msg . '")';
+			?>
+		</script>
+	</head>
+	<body>
