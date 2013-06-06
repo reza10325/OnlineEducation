@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `exam` (
   `courses_id` int(11) NOT NULL,
   `creator_id` int(11) NOT NULL COMMENT 'managers id',
   `time_exam` int(11) NOT NULL COMMENT 'modat zamane exam',
-  `date_exam` timestamp NOT NULL COMMENT 'tarikhe exam',
+  `date_exam` timestamp NULL COMMENT 'tarikhe exam',
   `result` enum('hide','show') COLLATE utf8_persian_ci NOT NULL DEFAULT 'hide',
   `randomize` enum('yes','no') COLLATE utf8_persian_ci NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`id`),
