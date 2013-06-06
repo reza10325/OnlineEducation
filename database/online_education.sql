@@ -99,8 +99,8 @@ CREATE TABLE IF NOT EXISTS `exam` (
   `courses_id` int(11) NOT NULL,
   `creator_id` int(11) NOT NULL COMMENT 'managers id',
   `time_exam` int(11) NOT NULL COMMENT 'modat zamane exam',
-  `date_exam` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'tarikhe exam',
-  `item_number` int(11) NOT NULL,
+  `date_exam` timestamp NOT NULL COMMENT 'tarikhe exam',
+  `result` enum('hide','show') COLLATE utf8_persian_ci NOT NULL DEFAULT 'hide',
   `randomize` enum('yes','no') COLLATE utf8_persian_ci NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`id`),
   KEY `courses_id` (`courses_id`),
@@ -174,8 +174,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `exam_id` int(11) NOT NULL,
   `content` text COLLATE utf8_persian_ci NOT NULL,
-  `number_of_answer` int(11) NOT NULL,
-  `randomize` tinyint(1) NOT NULL,
+  `randomize` enum('yes','no') COLLATE utf8_persian_ci NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`id`),
   KEY `exam_id` (`exam_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
