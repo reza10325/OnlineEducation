@@ -107,10 +107,9 @@ CREATE TABLE IF NOT EXISTS `managers` (
   `family` varchar(200) COLLATE utf8_persian_ci NOT NULL,
   `username` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(32) COLLATE utf8_persian_ci NOT NULL,
-  `age` tinyint(4) NOT NULL,
   `gender` enum('male','female') COLLATE utf8_persian_ci NOT NULL,
   `melli_code` int(10) NOT NULL,
-  `mobile` int(11) NOT NULL,
+  `mobile` varchar(255) COLLATE utf8_persian_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `address` text COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -133,12 +132,15 @@ CREATE TABLE IF NOT EXISTS `message` (
   `sender_type` enum('managers','users') COLLATE utf8_persian_ci NOT NULL,
   `reciver_type` enum('managers','users') COLLATE utf8_persian_ci NOT NULL,
   `title` varchar(50) COLLATE utf8_persian_ci NOT NULL,
-  `comment` longtext COLLATE utf8_persian_ci NOT NULL,
-  `date` int(10) NOT NULL,
-  `attache` text COLLATE utf8_persian_ci,
+  `content` text COLLATE utf8_persian_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `attach` varchar(255) COLLATE utf8_persian_ci DEFAULT NULL,
+  `sender_status` enum('read','delete') COLLATE utf8_persian_ci NOT NULL,
+  `reciever_status` enum('unread','read','delete') COLLATE utf8_persian_ci NOT NULL DEFAULT 'unread',
   PRIMARY KEY (`id`),
   KEY `sender_id` (`sender_id`,`reciver_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
+
 
 -- --------------------------------------------------------
 
@@ -161,19 +163,21 @@ CREATE TABLE IF NOT EXISTS `questions` (
 -- Table structure for table `users`
 --
 
+
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8_persian_ci NOT NULL,
   `family` varchar(200) COLLATE utf8_persian_ci NOT NULL,
-  `mobile` int(11) NOT NULL,
-  `age` tinyint(4) NOT NULL,
+  `mobile` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  `birth_day` varchar(255) COLLATE utf8_persian_ci NOT NULL,
   `gender` enum('male','female') COLLATE utf8_persian_ci NOT NULL,
   `melli_code` int(10) NOT NULL,
-  `email` varchar(50) COLLATE utf8_persian_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_persian_ci NOT NULL,
   `field_id` int(11) NOT NULL,
   `address` text COLLATE utf8_persian_ci NOT NULL,
   `username` varchar(50) COLLATE utf8_persian_ci NOT NULL,
   `password` varchar(32) COLLATE utf8_persian_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `melli_code` (`melli_code`,`email`),
   UNIQUE KEY `mobile` (`mobile`),
