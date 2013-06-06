@@ -30,9 +30,7 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `questions_id` int(11) NOT NULL,
   `answer_text` text COLLATE utf8_persian_ci NOT NULL,
-  `content` text COLLATE utf8_persian_ci NOT NULL,
   `istrue` enum('yes','no') COLLATE utf8_persian_ci NOT NULL,
-  `rondomize` enum('yes','no') COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `questions_id` (`questions_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
@@ -47,8 +45,9 @@ CREATE TABLE IF NOT EXISTS `answers_given` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `users_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
   `answers_id` text COLLATE utf8_persian_ci NOT NULL,
-  `success` enum('yes','no') COLLATE utf8_persian_ci NOT NULL,
+  `success` enum('yes','no','not answer') COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `answers_id` (`users_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
