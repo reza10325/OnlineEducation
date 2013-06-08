@@ -1,11 +1,11 @@
 <?php
 class mysql{
 	static function singletone(){
-		static $ins;
-		if(empty($ins)){
-			$ins = new self();
+		static $instance;
+		if(empty($instance)){
+			$instance = new self();
 		}
-		return $ins;
+		return $instance;
 	}
 	function __construct(){
 		mysql_connect(DB_HOST,DB_USER,DB_PASS);
@@ -48,16 +48,17 @@ class mysql{
 		return $return;
 	}
 	
-
 	function escape($str){
 		return mysql_real_escape_string($str);
 	}
+	
 	function error(){
 		print mysql_error();
 		exit;
 	}
+	
 	function __destruct(){
-		mysql_close();
+		//mysql_close();
 	}
 }
 ?>

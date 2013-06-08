@@ -37,13 +37,12 @@ CREATE TABLE IF NOT EXISTS `answers_given` (
 CREATE TABLE IF NOT EXISTS `courses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fields_id` int(11) NOT NULL,
-  `teacher-id` int(11) NOT NULL,
-  `cepacity` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `capacity` int(11) NOT NULL,
   `period-time` int(11) NOT NULL,
-  `start-period` date NOT NULL,
-  `end-period` date NOT NULL,
-  `document` varchar(255) COLLATE utf8_persian_ci NOT NULL,
-  `const-fixed` int(11) NOT NULL,
+  `start_period` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `end_period` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `cost_fixed` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fields_id` (`fields_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
@@ -57,8 +56,8 @@ CREATE TABLE IF NOT EXISTS `courses` (
 CREATE TABLE IF NOT EXISTS `courses_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `courses_id` int(11) NOT NULL,
-  `status` enum('articles','documents') COLLATE utf8_persian_ci NOT NULL DEFAULT 'articles',
-  `link` text COLLATE utf8_persian_ci NOT NULL,
+  `status` enum('articles','refrences') COLLATE utf8_persian_ci NOT NULL DEFAULT 'articles',
+  `link` varchar(255) COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `courses_id` (`courses_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
@@ -88,8 +87,10 @@ CREATE TABLE IF NOT EXISTS `exam` (
 -- Table structure for table `fields`
 --
 
+
 CREATE TABLE IF NOT EXISTS `fields` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_persian_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
 
@@ -184,6 +185,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `name` (`name`),
   KEY `family` (`family`),
   KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_course`
+--
+
+CREATE TABLE IF NOT EXISTS `users_course` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `users_id` int(11) NOT NULL,
+  `courses_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `users_id` (`users_id`),
+  KEY `courses_id` (`courses_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
