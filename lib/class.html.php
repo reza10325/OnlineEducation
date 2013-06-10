@@ -30,29 +30,36 @@ class html {
 		functions added recently
 	***************************************************************/
 	
+	static function mainRoot(){
+		$r= substr(ROOT,strlen($_SERVER['DOCUMENT_ROOT']));
+		$r='http://' . $_SERVER['SERVER_NAME'] . str_replace('\\', '/', $r);
+		return $r;
+	}
 	static function dirCss($c){
-		$cssName=VIEW .DS .'css' .DS .$c .'.css';
-		if(!file_exists ($cssName)){
+		$cssPath=VIEW .DS .'css' .DS .$c .'.css';
+		if(!file_exists ($cssPath)){
 			return false;
 		}
-		return $cssName;
+		$cssPath= substr($cssPath,strlen(ROOT));
+		$cssPath='http://' . $_SERVER['SERVER_NAME'] . str_replace('\\', '/', $cssPath);
+		return $cssPath;
 	}
 	static function dirJs ($j){
-		$jsName=VIEW .DS .'js' .DS .$j .'.js';
-		if(!file_exists ($jsName)){
+		$jsPath=VIEW .DS .'js' .DS .$j .'.js';
+		if(!file_exists ($jsPath)){
 			return false;
 		}
-		return $jsName;
+		$jsPath= substr($jsPath,strlen(ROOT));
+		$jsPath='http://' . $_SERVER['SERVER_NAME'] . str_replace('\\', '/', $jsPath);
+		return $jsPath;
 	}
 	static function dirImage ($img){
-		$imageName=VIEW .DS .'images' .DS .$img ;
-		if(!file_exists ($imageName)){
+		$imagePath=VIEW .DS .'images' .DS .$img ;
+		if(!file_exists ($imagePath)){
 			return false;
 		}
-		return $imageName;
-	}
-	static function mainRoot(){
-		$r= $_SERVER['DOCUMENT_ROOT'];
-		return $r;
+		$imagePath= substr($imagePath,strlen(ROOT));
+		$imagePath='http://' . $_SERVER['SERVER_NAME'] . str_replace('\\', '/', $imagePath);
+		return $imagePath;
 	}
 }
