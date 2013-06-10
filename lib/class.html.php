@@ -2,24 +2,38 @@
 class html {
 	static $js = array();
 	static $css = array();
-	static function addJs($js){
+	static $priority;
+	static $jpr;
+	static function addJs($js,$jp){
+		self::$jpr=$jp;
 		self::$js[] = $js;
 	}
-	static function addCss($css){
-		self::$css[] = $css;
+	static function addCss($css,$p){
+		self::$priority=$p;
+		self::$css[]=$css;
 	}
 	static function loadJs(){
 		$str = '';
 		foreach (self::$js as $key => $value) {
-			$str .= '<script src="js/' . $value . '.js"></script>';
+			if(self::$jpr=='first'){
+				$str='<script src="js/' . $value . '.js"></script>' . $str;
+			}
+			else{
+				$str .= '<script src="js/' . $value . '.js"></script>';
+			}
 		}
 		return $str;
 	}
 	static function loadCss(){
-		$str = '';
-		foreach (self::$css as $key => $value) {
-			$str .= '<link rel="stylesheet" type="text/css" href="css/' . $value . '.css" />';
-		}
+		$str='';
+			foreach (self::$css as $key => $value) {
+				if(self::$priority =='first'){
+					$str='<link rel="stylesheet" type="text/css" href="css/' . $value . '.css" />' . $str;
+				}
+				else{
+					$str.= '<link rel="stylesheet" type="text/css" href="css/' . $value . '.css" />';
+				}
+			}
 		return $str;
 	}
 	static function loadImg($image_name){
