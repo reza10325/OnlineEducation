@@ -4,3 +4,4 @@
 tmp/*
 tmp/!.htaccess
 *~
+config.local.php
