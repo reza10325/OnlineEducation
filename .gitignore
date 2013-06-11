@@ -1,5 +1,6 @@
 .buildpath
 .project
 .settings/
-tmp/
+tmp/*
+tmp/!.htaccess
 *~
