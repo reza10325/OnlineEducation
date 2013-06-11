@@ -55,7 +55,7 @@ class html {
 			return false;
 		}
 		$cssPath= substr($cssPath,strlen(ROOT));
-		$cssPath='http://' . $_SERVER['SERVER_NAME'] . str_replace('\\', '/', $cssPath);
+		$cssPath=self::mainRoot() . str_replace('\\', '/', $cssPath);
 		return $cssPath;
 	}
 	static function dirJs ($j){
@@ -64,7 +64,7 @@ class html {
 			return false;
 		}
 		$jsPath= substr($jsPath,strlen(ROOT));
-		$jsPath='http://' . $_SERVER['SERVER_NAME'] . str_replace('\\', '/', $jsPath);
+		$jsPath=self::mainRoot() . str_replace('\\', '/', $jsPath);
 		return $jsPath;
 	}
 	static function dirImage ($img){
@@ -73,7 +73,26 @@ class html {
 			return false;
 		}
 		$imagePath= substr($imagePath,strlen(ROOT));
-		$imagePath='http://' . $_SERVER['SERVER_NAME'] . str_replace('\\', '/', $imagePath);
+		$imagePath=self::mainRoot(). str_replace('\\', '/', $imagePath);
 		return $imagePath;
+	}
+	static function absPath ($r_path){
+		$current_page= $_SERVER['DOCUMENT_ROOT'] . $_SERVER['REQUEST_URI'];
+		$r = explode('/', $r_path);
+		$path=explode('/', $current_page);
+		$k=sizeof($path);
+		foreach ($r as $key => $value){
+			if($value== '..'){
+				array_pop ($path);
+			}
+			else if(($value != '.') && ($value != $path[$k-2])){
+				$k--;
+				array_push ($path , $value);
+			}
+		}
+		$path=implode ($path,'/');
+		$abs=substr($path,strlen(ROOT));
+		$abs=self::mainRoot(). $abs;
+		return $abs;
 	}
 }
