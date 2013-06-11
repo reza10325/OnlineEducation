@@ -95,4 +95,37 @@ class html {
 		$abs=self::mainRoot(). $abs;
 		return $abs;
 	}
+	static function getUrl ($add_get,$clean){
+		$current_url= 'http://' .  $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+		if($add_get!=''){
+			$p=explode('/', $current_url);
+			$k1=sizeof($p);
+			$last_get=explode('?', $p[$k1-1]);
+			$k2=sizeof($last_get);
+			foreach ($add_get as $key => $value) {
+				$g1= $key .'='. $value;
+				$g2='&'. $key .'='. $value;
+			}
+			
+			if($k2>1){
+				$l=$last_get[1];
+				if($clean=='true'){
+					$last_get[1]=$g1;
+				}
+				else{
+					$last_get[1].=$g2;
+				}
+				$t=implode('?',$last_get);
+			}
+			else{
+				$t= $last_get[0].'?'. $g1;
+			}
+			$p[$k1-1]=$t;
+			$p= implode('/',$p);
+			return $p
+		}
+		else{
+			return $current_url;
+		}
+	}
 }
