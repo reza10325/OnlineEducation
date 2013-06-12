@@ -129,7 +129,7 @@ class html {
 		}
 	}
 	static function isAjax(){
-		if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest'){
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 			// If its an ajax request execute the code below       
 			return true;
 		}
