@@ -128,4 +128,15 @@ class html {
 			return $current_url;
 		}
 	}
+	static function isAjax(){
+		if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest'){
+			// If its an ajax request execute the code below       
+			return true;
+		}
+		else{
+			//if it's not an ajax request echo the below.
+			return false;
+		}
+		
+	}
 }
