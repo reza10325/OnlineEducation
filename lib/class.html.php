@@ -4,11 +4,11 @@ class html {
 	static $css = array();
 	static $priority;
 	static $jpr;
-	static function addJs($js,$jp){
+	static function addJs($js,$jp='last'){
 		self::$jpr=$jp;
 		self::$js[] = $js;
 	}
-	static function addCss($css,$p){
+	static function addCss($css,$p='last'){
 		self::$priority=$p;
 		self::$css[]=$css;
 	}
@@ -122,7 +122,7 @@ class html {
 			}
 			$p[$k1-1]=$t;
 			$p= implode('/',$p);
-			return $p
+			return $p;
 		}
 		else{
 			return $current_url;
