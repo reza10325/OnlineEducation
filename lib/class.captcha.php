@@ -1,4 +1,5 @@
 <?php
+
 class Captcha {
 	private $_width = 200; // image width
 	private $_height = 80; // image height
