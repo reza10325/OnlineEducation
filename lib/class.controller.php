@@ -13,7 +13,7 @@ class controller{
 		}
 		if(!$ajax){
 			html::addJs('jquery');
-			html::addCss('main');
+			html::addCss('main','first');
 		}
 		ob_start();
 		include $file;
