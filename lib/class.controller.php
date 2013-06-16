@@ -6,14 +6,14 @@ class controller{
 		$header = VIEW . DS . 'header.phtml';
 		$footer = VIEW . DS . 'footer.phtml';
 		if(!file_exists($file) || !is_readable($file)){
-			return false;
+				return false;
 		}
 		if(!empty($param)){
 			extract($param);
 		}
 		if(!$ajax){
 			html::addJs('jquery');
-			html::addCss('main','first');
+			html::addCss('main');
 		}
 		ob_start();
 		include $file;
