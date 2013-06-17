@@ -2,13 +2,11 @@
 class debugger{
 	static $ENV;
 	static $MSG;
-	static function setEnvironment($env){
+	static function setEnvMsg($env){
 		self::$ENV = $env;
-	}
-	static function setMessage($msg){
 		self::$MSG = $msg;
 	}
-	static function trigger() {
+		static function trigger() {
 		switch (self::$ENV) {
 			case 'production':
 				ob_start();
