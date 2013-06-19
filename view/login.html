@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<style>
+		body {font-family: arial;}
+		html { 
+		  background: url(https://trello-attachments.s3.amazonaws.com/519f38d6c248c8d517003087/519f38d6c248c8d517003091/a561d32e28074555d6903056f2d331e9/Blur-bg.jpg) no-repeat center center fixed; 
+		  background-size: cover;
+		  -webkit-background-size: cover; <!-- Safari 3.0 Browser -->
+		  -moz-background-size: cover; <!-- Firefox 3.6 Browser -->
+		  -o-background-size: cover; <!-- Old Opera Browsers -->
+		  <!-- Internet Explorer Browser -->
+		  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://trello-attachments.s3.amazonaws.com/519f38d6c248c8d517003087/519f38d6c248c8d517003091/a561d32e28074555d6903056f2d331e9/Blur-bg.jpg', sizingMethod='scale');
+		  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://trello-attachments.s3.amazonaws.com/519f38d6c248c8d517003087/519f38d6c248c8d517003091/a561d32e28074555d6903056f2d331e9/Blur-bg.jpg', sizingMethod='scale')";
+		}
+		.overlay {
+		margin:100px;
+		padding: 100px 0px 100px 50px;
+		width: 50%;
+		height: 50%;
+		background: rgba(20,20,20,0.3);
+		z-index: 10;
+		}
+	</style>
+	<!--[if lte IE 6]>
+    <style type="text/css">
+		html {overflow-y:hidden;
+		background: url(https://trello-attachments.s3.amazonaws.com/519f38d6c248c8d517003087/519f38d6c248c8d517003091/a561d32e28074555d6903056f2d331e9/Blur-bg.jpg) no-repeat center center fixed;}
+		body {overflow-y:auto;}
+		#page-background {position:absolute; z-index:-1;}
+		#content {position:static;padding:10px;}
+    	#container {height: 100%;}
+    </style>
+    <![endif]-->
+</head>
+
+<body>
+	<form name="input" action="" method="POST">
+		<div class="overlay">
+			<h1>Login</h1>
+			<input id="input-username" type="text" value="Username" onfocus="if (this.value=='Username') this.value='';" onblur="if (this.value=='') this.value='Username';" name="username" autofocus>
+			<br>
+			<br>
+			<input id="input-password" type="password" value="Password*" onfocus="if (this.value=='Password*') this.value='';" onblur="if (this.value=='') this.value='Password*';" name="password" alt="password" required>
+			<input type="submit" value="Login">
+		</div>
+	</form>
+</body>
+</html>

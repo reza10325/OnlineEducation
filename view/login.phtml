@@ -1,0 +1,23 @@
+<?php html::addCss('login');?>
+<div class="overlay">
+<a class="CloseImg" title="Back" ></a>
+	<form name="input" action="" class="bt-formlogin" method="POST">
+			<h1>Login</h1>
+				<div class="bt-field">				
+					<div class="bt-input-remember" id="bt-input-remember">
+						<input id="bt-checkbox-remember" class="bt-checkbox-remember" type="checkbox" name="remember" value="yes">
+							Remember Me					</div>	
+				</div>
+			<div class="bt-field">
+				<div class="bt-input">
+					<input id="input-username" type="text" value="Username" onfocus="if (this.value=='Username') this.value='';" onblur="if (this.value=='') this.value='Username';" name="username" autofocus>
+				</div>
+			</div>
+			<div class="bt-field">
+				<div class="bt-input">
+				<input id="input-password" type="password" value="Password*" onfocus="if (this.value=='Password*') this.value='';" onblur="if (this.value=='') this.value='Password*';" name="password" alt="password" required>
+			</div>
+			</div>
+			<input type="submit" name="Submit" class="bt-buttonsubmit" onclick="" value="">
+	</form>
+</div>

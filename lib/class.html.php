@@ -4,11 +4,11 @@ class html {
 	static $css = array();
 	static $priority;
 	static $jpr;
-	static function addJs($js,$jp){
+	static function addJs($js,$jp='last'){
 		self::$jpr=$jp;
 		self::$js[] = $js;
 	}
-	static function addCss($css,$p){
+	static function addCss($css,$p='last'){
 		self::$priority=$p;
 		self::$css[]=$css;
 	}
@@ -28,16 +28,16 @@ class html {
 		$str='';
 			foreach (self::$css as $key => $value) {
 				if(self::$priority =='first'){
-					$str='<link rel="stylesheet" type="text/css" href="css/' . $value . '.css" />' . $str;
+					$str='<link rel="stylesheet" type="text/css" href="view/css/' . $value . '.css" />' . $str;
 				}
 				else{
-					$str.= '<link rel="stylesheet" type="text/css" href="css/' . $value . '.css" />';
+					$str.= '<link rel="stylesheet" type="text/css" href="view/css/' . $value . '.css" />';
 				}
 			}
 		return $str;
 	}
 	static function loadImg($image_name){
-		return '<img src="images/'.$image_name.'" />' ;
+		return '<img src="view/images/'.$image_name.'" />' ;
 	}
 
 	/***************************************************************
@@ -122,7 +122,7 @@ class html {
 			}
 			$p[$k1-1]=$t;
 			$p= implode('/',$p);
-			return $p
+			return $p;
 		}
 		else{
 			return $current_url;
@@ -138,5 +138,26 @@ class html {
 			return false;
 		}
 		
+	}
+	static function generateLink($method='' ,$controller=''){
+		$page=self::mainRoot(). '/' . 'index.php' ;
+		$current_p=explode('/', self::getUrl('',''));
+		$k=sizeof($current_p);
+		$current_cont=$current_p[$k-2];
+		$current_method=$current_p[$k-1];
+		$current_method_adr= self::getUrl('','');
+		array_pop($current_p);
+		$current_cont_adr=implode($current_p ,'/' );
+		array_pop($current_p);
+		$m=implode($current_p ,'/' );
+		if($method==''&& $controller==''){
+			return $main_page;
+		}
+		else if($method != '' && $controller==''){
+			return $current_cont_adr. '/' . $method;
+		}
+		else{
+			return $m. '/' . $controller . '/'. $method;
+		}
 	}
 }

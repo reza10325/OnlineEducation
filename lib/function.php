@@ -13,4 +13,8 @@ function error($method , $msg = ''){
 	$c->$method($msg);
 	exit;
 }
+function login($method){
+	$c = new controller_login();
+	$c->$method();
+}
 ?>
