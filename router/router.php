@@ -6,7 +6,8 @@ if(!class_exists($controller) || !method_exists($controller, $method)){
 	//redirect('../error'.DS.'_404');
 	//loadController('controller_error', '_404');
 	//error('_404','not found controller or method');
-	login('_login');
+	//login('_login');
+	register('_register');
 }
 $class = new $controller;
 $class->$method();

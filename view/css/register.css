@@ -1,0 +1,78 @@
+body {font-family: tahoma;}
+html { 
+  background: url("../images/Blur-bg.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  -webkit-background-size: cover; <!-- Safari 3.0 Browser -->
+  -moz-background-size: cover; <!-- Firefox 3.6 Browser -->
+  -o-background-size: cover; <!-- Old Opera Browsers -->
+  <!-- Internet Explorer Browser -->
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/Blur-bg.jpg', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/Blur-bg.jpg', sizingMethod='scale')";
+}
+.overlay {
+	margin: 50px 0px 0px 100px;
+	padding: 50px 0px 100px 80px;
+	width: 50%;
+	height: 50%;
+	background: rgba(20,20,20,0.3);
+	z-index: 10;
+	float:left;
+}
+.bt-input input[type=text],
+.bt-input input[type=password]{
+	border: none;
+	margin: 0px;   
+	text-indent: 5px;
+	width: 400px;
+	max-width: 100%;
+	height: 27px;
+	padding: 0;
+	border-radius: 0;
+	color: #000;
+}
+.bt-field{
+	padding-left: 30px;
+	line-height: 40px;
+	text-align: right;
+
+}
+.register-frm{
+	float:left;
+}
+.bt-input input{
+	background: url("../images/bgd-input.png") repeat top left transparent;
+}
+.bt-buttonsubmit {
+	  background: url("../images/button.png") no-repeat scroll left top transparent;
+	  border: none;
+	  cursor: pointer;
+	  height: 27px;
+	  width: 29px;
+	  position: absolute;
+	  top: 600px;
+	  left: 715px;
+}
+.bt-formlogin {
+	background: url("../images/bgd-login.png") no-repeat top left;
+	padding-left: 200px;
+	height: 200px;
+}
+.CloseImg {
+	background:url("../images/close-btn.png") 
+	top no-repeat; 
+	width:46px; 
+	height:46px; 
+	display:inline; 
+	z-index:32; 
+	position:absolute; 
+	top:180px; 
+	left:120px; 
+	cursor:pointer;}
+	.btl-field{
+	padding-left: 30px;
+	line-height: 37px;
+}
+.btl-label{
+	float:left;
+	padding-right:5px;
+}

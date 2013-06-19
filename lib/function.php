@@ -17,4 +17,8 @@ function login($method){
 	$c = new controller_login();
 	$c->$method();
 }
+function register($method){
+	$c = new controller_register();
+	$c->$method();
+}
 ?>
