@@ -28,16 +28,16 @@ class html {
 		$str='';
 			foreach (self::$css as $key => $value) {
 				if(self::$priority =='first'){
-					$str='<link rel="stylesheet" type="text/css" href="css/' . $value . '.css" />' . $str;
+					$str='<link rel="stylesheet" type="text/css" href="view/css/' . $value . '.css" />' . $str;
 				}
 				else{
-					$str.= '<link rel="stylesheet" type="text/css" href="css/' . $value . '.css" />';
+					$str.= '<link rel="stylesheet" type="text/css" href="view/css/' . $value . '.css" />';
 				}
 			}
 		return $str;
 	}
 	static function loadImg($image_name){
-		return '<img src="images/'.$image_name.'" />' ;
+		return '<img src="view/images/'.$image_name.'" />' ;
 	}
 
 	/***************************************************************
