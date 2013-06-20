@@ -9,7 +9,7 @@ class Captcha {
 	private $_textColor = array( 'R' => 0, 'G' => 0, 'B' => 0); // default - black text
 	private $_lineColor = array( 'R' => 255, 'G' => 255, 'B' => 255); // default - line color
  
-	function showImage() {
+	function show() {
 		$sec_code = $this->generateSecurityCode();
 		$img = @imagecreatetruecolor($this->_width, $this->_height);
 		$text_color = imagecolorallocate($img, $this->_textColor['R'],
