@@ -34,4 +34,11 @@ define('DB_CHARSET', 'utf-8');
 define('AUTH_HASH', '0/\/|_|/\/ EDUC/\TI0/\/');
 
 error_reporting(E_ALL);
+
+//Server Address
+$SmtpServer="127.0.0.1";
+$SmtpPort="25"; //default
+$SmtpUser="username";
+$SmtpPass="password";
+
 ?>
