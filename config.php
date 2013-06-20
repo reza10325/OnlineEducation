@@ -33,12 +33,17 @@ define('DB_CHARSET', 'utf-8');
  */
 define('AUTH_HASH', '0/\/|_|/\/ EDUC/\TI0/\/');
 
+/*
+ * Server Address and Address mail
+ */
+define('SmtpServer','127.0.0.1');
+define('SmtpPort','25');  // default
+define('SmtpUser','username');
+define('SmtpPass','password'); 
+define('From','example@host.com');
+
 error_reporting(E_ALL);
 
-//Server Address
-$SmtpServer="127.0.0.1";
-$SmtpPort="25"; //default
-$SmtpUser="username";
-$SmtpPass="password";
+
 
 ?>
