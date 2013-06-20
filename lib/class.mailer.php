@@ -1,10 +1,11 @@
 <?php
 class SMTPClient{
-	function SMTPClient ($SmtpServer, $SmtpPort, $SmtpUser, $SmtpPass, $from, $to, $subject, $body){
-		$this->SmtpServer = $SmtpServer;
-		$this->SmtpUser = base64_encode ($SmtpUser);
-		$this->SmtpPass = base64_encode ($SmtpPass);
-		$this->from = $from;
+	function SMTPClient ($to, $subject, $body){
+		$this->SmtpServer = SmtpServer;
+		$this->SmtpPort = SmtpPort;
+		$this->SmtpUser = base64_encode (SmtpUser);
+		$this->SmtpPass = base64_encode (SmtpPass);
+		$this->from = From;
 		$this->to = $to;
 		$this->subject = $subject;
 		$this->body = $body;

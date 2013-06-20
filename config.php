@@ -42,6 +42,11 @@ define('SmtpUser','username');
 define('SmtpPass','password'); 
 define('From','example@host.com');
 
+/*
+ * Define Error file Path
+ */
+define('ERROR_FILE', ROOT . DS . 'tmp' . DS . 'error.log');
+  
 error_reporting(E_ALL);
 
 
