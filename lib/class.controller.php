@@ -6,7 +6,8 @@ class controller{
 		$header = VIEW . DS . 'header.phtml';
 		$footer = VIEW . DS . 'footer.phtml';
 		if(!file_exists($file) || !is_readable($file)){
-				return false;
+            debugger::trigger("FILE [$file] NOT FOUND ");
+            return false;
 		}
 		if(!empty($param)){
 			extract($param);

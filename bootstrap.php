@@ -26,4 +26,4 @@ function __autoload($class){ //x_k_d
 		return;
 	}
 }
-?>
+?>

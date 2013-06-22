@@ -129,15 +129,7 @@ class html {
 		}
 	}
 	static function isAjax(){
-		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-			// If its an ajax request execute the code below       
-			return true;
-		}
-		else{
-			//if it's not an ajax request echo the below.
-			return false;
-		}
-		
+		return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 	}
 	static function generateLink($method='' ,$controller=''){
 		$page=self::mainRoot(). '/' . 'index.php' ;

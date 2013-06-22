@@ -1,9 +1,11 @@
 <?php
 class controller_users extends controller{
 	function userdata(){
-		$users = new users();
-		$user_data = $users->userdata();
-		$this->render('users',compact('user_data'));
+        print 's';
+        /*$users = new users();
+        $user_data = $users->userdata();
+         */
+		//$this->render('usersa',compact('user_data'));
 	}
 }
 ?>

@@ -27,6 +27,7 @@ define('DB_USER','root');
 define('DB_PASS','');
 define('DB_NAME','online_education');
 define('DB_CHARSET', 'utf-8');
+define('ERROR_FILE',ROOT . DS . 'tmp' . DS . 'error.log');
 
 /*
  * encrypt
@@ -48,7 +49,4 @@ define('From','example@host.com');
 define('ERROR_FILE', ROOT . DS . 'tmp' . DS . 'error.log');
   
 error_reporting(E_ALL);
-
-
-
 ?>
