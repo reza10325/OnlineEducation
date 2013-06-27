@@ -3,7 +3,7 @@ class router {
     static private $section = array(
         '{controller}' => '(\w+)' ,
         '{action}' => '(\w+)',
-        '{params}' => '([\w/]+)'
+        '{params}' => '?([\w/]*)'
     );
 
     static function connect($rout, $callback){
