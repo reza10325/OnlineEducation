@@ -14,7 +14,7 @@
 			return $instance;
 		}
 		private function set( $name , $val = null , $ttl = 1400 ){
-			$_SESSION($name) . array('expire' => time()+$ttl , 'value' => $val);
+			$_SESSION[$name] = array('expire' => time()+$ttl , 'value' => $val);
 		}
 		private function get( $name ){
 			if (!empty($_SESSION[$name]) && $_SESSION[$name]['expire'] > time()){
@@ -27,8 +27,8 @@
 			UNSET($_SESSION[$name]); 
 		}
 		static function __callstatic($func,$arg){
-			$object = self::singlton();
-			call_user_func_array(array($object,$func), $arg);
+			$object = self::singleton();
+			return call_user_func_array(array($object,$func), $arg);
 		}
 		function __destruct(){
 			session_destroy(); 
