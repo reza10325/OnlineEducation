@@ -1,5 +1,7 @@
 <?php
+
 class mysql{
+
 	static function singletone(){
 		static $instance;
 		if(empty($instance)){
@@ -7,36 +9,36 @@ class mysql{
 		}
 		return $instance;
 	}
+
 	function __construct(){
 		mysql_connect(DB_HOST,DB_USER,DB_PASS);
 		mysql_select_db(DB_NAME);
 		mysql_query("SET CHARSET " . DB_CHARSET);
 	}
-	function query($query){
+	
+	private function query($query){
 		$result = mysql_query($query) or $this->error();
 		return $result;
 	}
 	
-	function getOne($query){
-		$row = $this->getRow($query);
+	function getOne($query, $value){ // $query ( select * from table where id = :id ) and $value is array (:id => 5) 
+		$row = $this->getRow($query, $value);
 		reset($row);
 		return current($row);
 	}
 	
-	function insert($query){
-		$add=$this->query($query);
-		return $add;
-	}
-	function getRow($query){
-		$result = $this->query($query);
+	function getRow($query, $value){
+		$query2 = $this->str_rep($query, $value);
+		$result = $this->query($query2);
 		if(mysql_num_rows($result) < 1){
 			return false;
 		}
 		return mysql_fetch_array($result);
 	}
 
-	function getAll($query){
-		$result = $this->query($query);
+	function getAll($query, $value){
+		$query2 = $this->str_rep($query, $value);
+		$result = $this->query($query2);
 		if(mysql_num_rows($result) < 1){
 			return false;
 		}
@@ -48,7 +50,39 @@ class mysql{
 		return $return;
 	}
 	
-	function escape($str){
+	function insert($table, $value ){
+		$query = " INSERT INTO $table SET ";
+		$insertValue = array();
+		foreach ($value as $key => $val) {
+			$insertValue [] = "`$key` = '$val'";
+		}
+		$query .= implode(',', $insertValue);
+		$add = $this->query($query);
+		return $add;
+	}
+	
+	function update( $table, $value, $where )//$value is array & $where is string whithout (Where)
+	{
+		if(empty($where)){
+			 return FALSE;
+		}
+		$query = " UPDATE $table SET ";
+		$insertValue = array();
+		foreach ($value as $key => $val) {
+			$insertValue [] = "`$key` = '$val'";
+		}
+		$query = $query . implode(',', $insertValue) . ' WHERE ' . $where;
+		$ans = $this-> query($query);
+		return $ans;
+	}
+	
+	function delete( $table, $where ){ // $where example:"id = 1"
+ 		$query = " DELETE FROM $table WHERE " . $where;
+		$ans = $this->query($query);
+		return $ans;
+	}
+	
+	static function escape($str){
 		return mysql_real_escape_string($str);
 	}
 	
@@ -56,9 +90,18 @@ class mysql{
 		print mysql_error();
 		exit;
 	}
+	function str_rep($query, $value){
+		foreach($value as $key => $val){
+			if(preg_match($key, '#^:(\w)+$#')){
+				$query2 = str_replace($key, $val, $query);
+			}
+		}
+		return $query2;
+	}
+
 	
 	function __destruct(){
-		//mysql_close();
+		mysql_close();
 	}
 }
 ?>
