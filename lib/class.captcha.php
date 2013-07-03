@@ -29,18 +29,18 @@ class Captcha {
 		imagefttext($img, $this->_fontSize, 0, $x, $y, $text_color, $this->_fontFile, $sec_code);
 		$LineColor = imagecolorallocate($img,$this->_lineColor['R'], $this->_lineColor['G'], 
 		$this->_lineColor['B']);//line color
-		for ($i = 0; $i <= 10; $i++) {
-			imageline($img, $i*20+mt_rand(4, 26), 0, $i*20-mt_rand(4, 26), 39, $LineColor);
+		for ($i = 0; $i <= $this->_width/10 ; $i++) {
+			imageline($img, $i*20+mt_rand($this->_height, $this->_width), 0, $i*20-mt_rand($this->_height, $this->_width), $this->_height, $LineColor);
 		}
-		for ($i = 0; $i <= 10; $i++) {
-			imageline($img, $i*20+mt_rand(4, 26), 39, $i*20-mt_rand(4, 26), 0, $LineColor);
+		for ($i = 0 ; $i <= $this->_width/10; $i++) {
+			imageline($img, $i*20+mt_rand($this->_height, $this->_width), 39, $i*20-mt_rand($this->_height, $this->_width), 0, $LineColor);
 		}
 		// create a 200*200 image
 		$img2 = imagecreatetruecolor(200, 50);
 		// allocate some colors
 		$white = imagecolorallocate($img, 255, 255, 255);
 		/* generate random arc lines in background */
-		imagearc($img,mt_rand(10, 26),10,mt_rand(4, 40),mt_rand(4, 40), 15, 165, $white);
+		imagearc($img,mt_rand($this->_height, $this->_width),10,mt_rand($this->_height, $this->_width),mt_rand($this->_height, $this->_width), 15, 165, $white);
 		//imagefilter($img, 7);
 		header("Content-Type: image/png"); 
 		imagepng($img); 
