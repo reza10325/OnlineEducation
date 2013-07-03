@@ -1,5 +1,4 @@
 <?php
-
 class mysql{
 
 	static function singletone(){
@@ -16,7 +15,10 @@ class mysql{
 		mysql_query("SET CHARSET " . DB_CHARSET);
 	}
 	
-	private function query($query){
+	function query($query, $value = array()){
+		foreach($value as $key => $val){
+			$query = str_replace($key, $val, $query);
+		}
 		$result = mysql_query($query) or $this->error();
 		return $result;
 	}
@@ -28,8 +30,7 @@ class mysql{
 	}
 	
 	function getRow($query, $value){
-		$query2 = $this->str_rep($query, $value);
-		$result = $this->query($query2);
+		$result = $this->query($query, $value);
 		if(mysql_num_rows($result) < 1){
 			return false;
 		}
@@ -37,12 +38,10 @@ class mysql{
 	}
 
 	function getAll($query, $value){
-		$query2 = $this->str_rep($query, $value);
-		$result = $this->query($query2);
+		$result = $this->query($query, $value);
 		if(mysql_num_rows($result) < 1){
 			return false;
 		}
-		
 		$return = array();
 		while($row = mysql_fetch_array($result)){
 			$return[] = $row;
@@ -82,7 +81,7 @@ class mysql{
 		return $ans;
 	}
 	
-	static function escape($str){
+	function escape($str){
 		return mysql_real_escape_string($str);
 	}
 	
@@ -90,15 +89,6 @@ class mysql{
 		print mysql_error();
 		exit;
 	}
-	function str_rep($query, $value){
-		foreach($value as $key => $val){
-			if(preg_match($key, '#^:(\w)+$#')){
-				$query2 = str_replace($key, $val, $query);
-			}
-		}
-		return $query2;
-	}
-
 	
 	function __destruct(){
 		mysql_close();
