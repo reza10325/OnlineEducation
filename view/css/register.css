@@ -53,8 +53,8 @@ html {
 	  height: 27px;
 	  width: 29px;
 	  position: absolute;
-	  top: 600px;
-	  left: 715px;
+	  top: 588px;
+	  right: 720px;
 }
 .bt-formlogin {
 	background: url("../images/bgd-login.png") no-repeat top right;
@@ -69,8 +69,8 @@ html {
 	display:inline; 
 	z-index:32; 
 	position:absolute; 
-	top:180px; 
-	left:120px; 
+	top:75px; 
+	right:140px; 
 	cursor:pointer;}
 	.btl-field{
 	padding-left: 30px;
