@@ -1,4 +1,8 @@
-body {font-family: tahoma;}
+body {
+	font-family: tahoma, sans-serif;;
+	color:white;
+	direction:rtl;
+}
 html { 
   background: url("../images/Blur-bg.jpg") no-repeat center center fixed; 
   background-size: cover;
@@ -10,13 +14,13 @@ html {
   -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/Blur-bg.jpg', sizingMethod='scale')";
 }
 .overlay {
-	margin: 50px 0px 0px 100px;
-	padding: 50px 0px 100px 80px;
-	width: 50%;
+	margin: 50px 100px 0px 0px;
+	padding: 0px 100px 0px 50px;
+	width: 80%;
 	height: 50%;
-	background: rgba(20,20,20,0.3);
+	background: rgba(20,20,20,0);
 	z-index: 10;
-	float:left;
+	float:right;
 }
 .bt-input input[type=text],
 .bt-input input[type=password]{
@@ -33,17 +37,17 @@ html {
 .bt-field{
 	padding-left: 30px;
 	line-height: 40px;
-	text-align: right;
+	text-align: left;
 
 }
 .register-frm{
-	float:left;
+	float:right;
 }
 .bt-input input{
-	background: url("../images/bgd-input2.png") repeat top left transparent;
+	background: url("../images/bgd-input2.png") repeat top right transparent;
 }
 .bt-buttonsubmit {
-	  background: url("../images/button.png") no-repeat scroll left top transparent;
+	  background: url("../images/button.png") no-repeat scroll right top transparent;
 	  border: none;
 	  cursor: pointer;
 	  height: 27px;
@@ -53,7 +57,7 @@ html {
 	  left: 715px;
 }
 .bt-formlogin {
-	background: url("../images/bgd-login.png") no-repeat top left;
+	background: url("../images/bgd-login.png") no-repeat top right;
 	padding-left: 200px;
 	height: 200px;
 }
@@ -73,6 +77,6 @@ html {
 	line-height: 37px;
 }
 .btl-label{
-	float:left;
+	float:right;
 	padding-right:5px;
 }

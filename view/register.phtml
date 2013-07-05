@@ -1,67 +1,69 @@
 <?php html::addCss('register');?>
 <div class="overlay">
 <a class="CloseImg" title="Back" ></a>
-	<form name="input" action="" class="register-frm" method="POST">
-			<h1>Register to site</h1>
+	<form name="input" action="" class="register-frm" method="POST" >
+			<h1> فرم عضویت در سایت</h1>
+			<h4> پر کردن فیلدهای ستاره دار (*) اجباری می باشد.</h1>
 			<div class="bt-field">
 				<div class="bt-input">
 					<div class="bt-input">
-						UserName: <input id="input-username" type="text" value="Username" onfocus="if (this.value=='Username') this.value='';" onblur="if (this.value=='') this.value='Username';" name="username" autofocus>
+						نام کاربری* <input id="username" type="text" value="" placeholder="نام کاربری انتخابی شما" name="username" required pattern="[a-zA-Z0-9_-]{6,12}" title="نام کاربری باید بین ۵ تا ۱۲ حرف باشد" autofocus >
 					</div>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
 					<div class="bt-input">
-						Name: <input id="input-name" type="text" value="" name="name" required>
+						نام* <input id="input-name" type="text" value="" placeholder="نام" name="name" required>
 					</div>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Family: <input id="input-family" type="text" value="" name="family" required>
+					نام خانوادگی* <input id="input-family" type="text" value="" placeholder="نام خانوادگی" name="family" required>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Password: <input id="input-password" type="password" value="Password*" onfocus="if (this.value=='Password*') this.value='';" onblur="if (this.value=='') this.value='Password*';" name="password" alt="password" required>
+					کد ملی* <input id="input-mellicode" type="text" value=""  name="MelliCode" required>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Verify Password: <input id="input-password" type="password" value="Password*" onfocus="if (this.value=='Password*') this.value='';" onblur="if (this.value=='') this.value='Password*';" name="password" alt="password" required>
+					جنسیت <input id="input-gender" type="text" value=""  name="Gender" >
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					MelliCode: <input id="input-mellicode" type="text" value=""  name="MelliCode" required>
+					تاریخ تولد <input id="input-birthdate" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" type="text" value="" placeholder="DD.MM.YYYY" name="BirthDate" >
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Gender: <input id="input-gender" type="text" value=""  name="Gender" >
+					رمز عبور* <input id="input-password" type="password" value="" placeholder="******" name="password1" alt="password" required>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Birthdate: <input id="input-birthdate" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" type="text" onfocus="if (this.value=='DD.MM.YYYY') this.value='';" onblur="if (this.value=='') this.value='DD.MM.YYYY';" value="DD.MM.YYYY" name="BirthDate" >
+					تکرار رمز عبور* <input id="input-password" type="password" value="" placeholder="******" name="password2" alt="password" required>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Email: <input id="input-email" type="text" value="Example@domain.com" onfocus="if (this.value=='Example@domain.com') this.value='';" onblur="if (this.value=='') this.value='Example@domain.com';" name="Email" required>
+					پست الکترونیک* <input id="input-email" type="text" value="" placeholder="Example@domain.com" name="Email" required>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Mobile: <input id="input-mobile" pattern="[0-9]{11}" type="text" value="09xxxxxxxxx" onfocus="if (this.value=='09xxxxxxxxx') this.value='';" onblur="if (this.value=='') this.value='09xxxxxxxxx';"  name="Mobile" required>
+					تلفن همراه <input id="input-mobile" pattern="[0-9]{11}" type="text" value="" placeholder="09xxxxxxxxx"  name="Mobile" required>
 				</div>
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					Address: <input id="input-address" type="text" value=""  name="Address" required>
+					نشانی <input id="input-address" type="text" value=""  name="Address" required>
 				</div>
+				<input type="submit" name="Submit" class="bt-buttonsubmit" onclick="" value="">
 			</div>
-			<input type="submit" name="Submit" class="bt-buttonsubmit" onclick="" value="">
+			
 	</form>
 </div>
