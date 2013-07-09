@@ -21,9 +21,8 @@ class router {
             }
         }
         asort($section);
-        $pattern = '#' . str_replace(array_keys(self::$section), self::$section, $rout) . '#';
+        $pattern = '#^' . str_replace(array_keys(self::$section), self::$section, $rout) . '$#';
         if(!preg_match($pattern, self::getUrl(), $match)){
-            print 'not match url';
             return false;
         }
         array_shift($match);
@@ -33,21 +32,30 @@ class router {
             next($match);
         }
         if(!empty($section['{params}'])){
-            $section['{params}'] = explode('/',$section['{params}']);
+            $section['{params}'] = explode('/',trim($section['{params}'],'/'));
         }
         is_callable($callback) && call_user_func($callback);
-        self::load($section['{controller}'],$section['{action}'],(array) $section['{params}']);
+        
+        $section['{controller}'] = !empty($section['{controller}']) ? $section['{controller}'] : 'index';
+        $section['{action}'] = !empty($section['{action}']) ? $section['{action}'] : 'index';
+        $section['{params}'] = !empty($section['{params}']) ? $section['{params}'] : array();
+        self::load($section['{controller}'],$section['{action}'],$section['{params}']);
         exit;
     }
-    static function load($controller = 'index', $action = 'index', $params = array()){
+
+    static function load($controller, $action, $params){
         $controller = 'controller_' . $controller;
         if(!class_exists($controller) || !method_exists($controller, $action)){
-           print 's';
-           debugger::trigger('not found method or class');
+            //header('Location: error/404');
+            //var_dump($controller,$action);exit;
+            header('Location: '. html::mainRoot() .'/error/404');
+            //debug_print_backtrace();
+            debugger::trigger('not found method or class');
         }
         $obj = new $controller;
         call_user_func_array(array($obj,$action),$params);
     }
+    
     static function getUrl(){
         return trim($_GET['__'], '/');
     }

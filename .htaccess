@@ -1,6 +1,5 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine on
 	RewriteRule ^(.*/)*(js|images|css)/(.+)$ view/$2/$3 [QSA,L]
-	#RewriteRule ^(.+)/(.+) index.php?__controller=$1&__method=$2 [QSA,L]
 	RewriteRule ^(.*)$ index.php?__=$1 [QSA,L]
 </IfModule>
