@@ -1,0 +1,110 @@
+body {
+	font-family: tahoma;
+	background: #333;
+	display: block;
+	direction:rtl;
+}
+.container {
+  background: url('../view/images/bgd-input.png') right top repeat;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px 10px 0;
+}
+  .main {
+    margin: auto;
+}
+  a {
+    color: #ffffff;
+}
+  .row {
+    margin-right: -10px;
+}
+  .logo {
+   background: #bb1d48;
+   height: 119px;
+   width: 248px;
+   min-height: 120px;
+   float: right;
+}
+  .menu{
+	background: #e0522f;
+	color: #fff;
+	width: 119px;
+	padding: 0px 0;
+	text-align: center;
+	height: 119px;
+	margin: 0 10px 0 0;
+	float: right;
+}
+  .homemenu {
+	color: #fff;
+	background: #ffcc00;
+	width: 119px;
+	padding: 0px 0;
+	text-align: center;
+	height: 119px;
+	margin: 0 10px 0 0;
+	float: right;
+}
+  .learn {
+	color: #fff;
+	background: #10cca6;
+	width: 119px;
+	padding: 0px 0;
+	text-align: center;
+	height: 119px;
+	margin: 0 10px 0 0;
+	float: right;
+}
+  .employment {
+	color: #fff;
+	background: #5435ae;
+	width: 119px;
+	padding: 0px 0;
+	text-align: center;
+	height: 119px;
+	margin: 0 10px 0 0;
+	float: right;
+}
+  .building {
+	color: #fff;
+	background: #6bb61d;
+	width: 119px;
+	padding: 0px 0;
+	text-align: center;
+	height: 119px;
+	margin: 0 10px 0 0;
+	float: right;
+}
+  .contact {
+	color: #fff;
+	background: #2e8bef;
+	width: 119px;
+	padding: 0px 0;
+	text-align: center;
+	height: 119px;
+	margin: 0 10px 0 0;
+	float: right;
+}
+  .image-title {
+	padding-top: 18px;
+	display:inline-block;
+}
+  .right-bar {
+	clear: both;
+	background: #bb1d48;
+	height: 470px;
+	width: 248px;
+	margin: 10px 0px 0 0;
+	min-height: 400px;
+	float: right;
+}
+  .center-bar {
+	background: #fff;
+	height: 470px;
+	width: 764px;
+	margin: 10px 10px 0 0;
+	min-height: 400px;
+	float: right;
+}
