@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once 'config.php';
 include_once 'lib/function.php';
 $mysql = mysql::singletone();
@@ -26,4 +25,4 @@ function __autoload($class){ //x_k_d
 		return;
 	}
 }
-?>
+?>

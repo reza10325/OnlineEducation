@@ -1,6 +1,6 @@
 <?php
 
-class controller_adminlogin extends controller{
+class controller_managers extends controller{
 	
 	function __construct(){
 		$this->filter(array(
@@ -12,20 +12,18 @@ class controller_adminlogin extends controller{
 	}
 
 	function login($msg = ''){
-		if(managers::isOnline()){
-			return $this->index();
-		}
-		$this->render('adminlogin', compact('msg'));
-	}
-	
+        redirect(html::generateLink('login', 'admin', array($msg)));
+    }
+
 	function check_login(){
 		if(managers::isOnline()){
 			return $this->index();
 		}
 		if(!empty($this->input['username'])){		
 			$auth = managers::login($this->input['username'],$this->input['password'],!empty($this->input['save']));
-			if($auth){
-				return $this->index();
+            if($auth){
+                redirect(html::generateLink('managers'));
+//				return $this->index();
 			}
 		}
 		return $this->login('invalid user or pass');

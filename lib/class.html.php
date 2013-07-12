@@ -131,25 +131,14 @@ class html {
 	static function isAjax(){
 		return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 	}
-	static function generateLink($method='' ,$controller=''){
-		$page=self::mainRoot(). '/' . 'index.php' ;
-		$current_p=explode('/', self::getUrl('',''));
-		$k=sizeof($current_p);
-		$current_cont=$current_p[$k-2];
-		$current_method=$current_p[$k-1];
-		$current_method_adr= self::getUrl('','');
-		array_pop($current_p);
-		$current_cont_adr=implode($current_p ,'/' );
-		array_pop($current_p);
-		$m=implode($current_p ,'/' );
-		if($method==''&& $controller==''){
-			return $main_page;
-		}
-		else if($method != '' && $controller==''){
-			return $current_cont_adr. '/' . $method;
-		}
-		else{
-			return $m. '/' . $controller . '/'. $method;
-		}
+    static function generateLink($controller, $method = 'index' , $params = array()){
+        $address = self::mainRoot();
+        $address .= '/' . $controller ;
+        $address .= '/' . $method ;
+        $params = array_map(function($value){
+            return urlencode($value);
+        },$params);
+        $address .= empty($params) ? '' : '/' . implode('/',$params); 
+        return $address;
 	}
 }

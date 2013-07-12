@@ -1,7 +1,10 @@
 <?php html::addCss('login');?>
+<script>
+<?= !empty($message) ? 'alert("' . $message . '")' : ''; ?>
+</script>
 <div class="overlay">
 <a class="CloseImg" title="Back" ></a>
-	<form name="input" action="" class="bt-formlogin" method="POST">
+    <form name="input" action="<?= $action ?>" class="bt-formlogin" method="POST">
 			<h1>Login</h1>
 				<div class="bt-field">				
 					<div class="bt-input-remember" id="bt-input-remember">

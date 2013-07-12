@@ -9,7 +9,7 @@
 *	editpass($olduser, $oldpass, $newuser, $newpass)
 */
 class managers extends model{
-	function singletone() {
+	static function singletone() {
 		static $instance;
 		if(empty($instance)) {
 			$instance = new self();
@@ -97,7 +97,7 @@ class managers extends model{
 
 	private function setCookie(){
 		$val = $id . ':' . encrypt::md5($id);
-		setcookie('admin_id', $val, time()+86400*7)
+		setcookie('admin_id', $val, time()+86400*7);
 	}
 
 	private function unsetCookie(){
