@@ -3,37 +3,23 @@
  * session::set('a','a')
  */
 class session{
-    function __construct() {
-        if(!session_id()){
-            session_start();
-        }
-    }
-    static function singleton() {
-        static $instance;
-        if(empty($instance)) {
-            $instance = new self();
-        }			
-        return $instance;
-    }
-    private function set( $name , $val = null , $ttl = 1400 ){
+
+    static function set( $name , $val = null , $ttl = 1400 ){
+	session_start();
         $_SESSION[$name] = array('expire' => time()+$ttl , 'value' => $val);
+	session_write_close();
     }
-    private function get( $name ){
+
+    static function get( $name ){
         if (!empty($_SESSION[$name]) && $_SESSION[$name]['expire'] > time()){
             return $_SESSION[$name]['value'];
         }
-        $this->delete($name);
+        self::delete($name);
         return FALSE;
     }
-    private function delete( $name ){
+
+    static function delete( $name ){
         UNSET($_SESSION[$name]); 
-    }
-    static function __callstatic($func,$arg){
-        $object = self::singleton();
-        return call_user_func_array(array($object,$func), $arg);
-    }
-    function __destruct(){
-        session_write_close(); 
     }
 }
 ?>
