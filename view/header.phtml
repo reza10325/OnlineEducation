@@ -7,7 +7,7 @@
 		<?= html::loadCss() ?>
 		<script>
 			<?php 
-			if($msg = msg::getMsg())
+			if($msg = msg::get())
 				print 'alert("' . $msg . '")';
 			?>
 		</script>
