@@ -15,7 +15,8 @@ class debugger{
      */
     static public function trigger($message = '', $exit = true, $limit = 0) {
         $backtrace = self::getBackTrace($limit);
-        array_unshift($backtrace, $message . "\n");
+		$date = date("Y-m-d H:i:s");   
+        array_unshift($backtrace, $message, $date . "\n");
         array_push($backtrace, str_repeat('=',50)."\n");
         switch (self::getEnvironment()) {
 			case 'production':
