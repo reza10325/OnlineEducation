@@ -1,6 +1,7 @@
 <?php
-class controller{
-	protected $input = array();
+abstract class controller{
+    protected $input = array();
+    abstract function index();
 	protected function render($view,$param = array(),$ajax = false){
 		$file = VIEW . DS . $view . '.phtml';
 		$header = VIEW . DS . 'header.phtml';
