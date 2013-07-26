@@ -12,3 +12,4 @@ class msg {
 		return $msg;
 	}
 }
+?>
