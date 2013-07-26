@@ -11,7 +11,7 @@ class session{
     }
 
     static function get( $name ){
-        session_start();
+        session_id() || session_start();
         if (!empty($_SESSION[$name]) && $_SESSION[$name]['expire'] > time()){
             return $_SESSION[$name]['value'];
         }
@@ -21,7 +21,7 @@ class session{
     }
 
     static function delete( $name ){
-        session_start();
+        session_id() || session_start();
         UNSET($_SESSION[$name]); 
         session_write_close();
     }
