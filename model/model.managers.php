@@ -9,7 +9,7 @@
 *	editpass($olduser, $oldpass, $newuser, $newpass)
 */
 class managers extends model{
-	function singletone() {
+	static function singletone() {
 		static $instance;
 		if(empty($instance)) {
 			$instance = new self();
@@ -63,9 +63,8 @@ class managers extends model{
 		));
 	}
 
-	private function editdata($username, $password, $status, $name, $family, $gender, $melli_code, $mobile, $email, $address){
-		$pass = encrypt::md5($password);
-		$cond = " username = '$username' and password = '$pass' ";
+	private function editdata($id, $status, $name, $family, $gender, $melli_code, $mobile, $email, $address){
+		$cond = " id = '$id' ";
 		$values = array(
 			'status' => $status,
 			'name' => $name,
@@ -80,12 +79,11 @@ class managers extends model{
 		return $this->$db->update($this->_table, $values, $cond );
 	}
 
-	private function editpass($olduser, $oldpass, $newuser, $newpass){
-		$pass = encrypt::md5($oldpass);
-		$cond = " username = '$olduser' and password = '$pass' ";
+	private function editpass($id, $newuser, $newpass){
+		$cond = " id = '$id'";
 		$values = array(
-			'username' => $username,
-			'password' => encrypt::md5($password)
+			'username' => $newuser,
+			'password' => encrypt::md5($newpass)
 			);
 		return $this->$db->update($this->_table, $values, $cond );
 	}
@@ -97,7 +95,7 @@ class managers extends model{
 
 	private function setCookie(){
 		$val = $id . ':' . encrypt::md5($id);
-		setcookie('admin_id', $val, time()+86400*7)
+		setcookie('admin_id', $val, time()+86400*7);
 	}
 
 	private function unsetCookie(){

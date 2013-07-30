@@ -23,13 +23,13 @@ class mysql{
 		return $result;
 	}
 	
-	function getOne($query, $value){ // $query ( select * from table where id = :id ) and $value is array (:id => 5) 
+	function getOne($query, $value = array()){ // $query ( select * from table where id = :id ) and $value is array (:id => 5) 
 		$row = $this->getRow($query, $value);
 		reset($row);
 		return current($row);
 	}
 	
-	function getRow($query, $value){
+	function getRow($query, $value = array()){
 		$result = $this->query($query, $value);
 		if(mysql_num_rows($result) < 1){
 			return false;
@@ -37,7 +37,7 @@ class mysql{
 		return mysql_fetch_array($result);
 	}
 
-	function getAll($query, $value){
+	function getAll($query, $value = array()){
 		$result = $this->query($query, $value);
 		if(mysql_num_rows($result) < 1){
 			return false;
@@ -49,7 +49,7 @@ class mysql{
 		return $return;
 	}
 	
-	function insert($table, $value ){
+	function insert($table, $value){
 		$query = " INSERT INTO $table SET ";
 		$insertValue = array();
 		foreach ($value as $key => $val) {

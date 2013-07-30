@@ -1,16 +1,21 @@
 <?php html::addCss('login');?>
+<script>
+<?= !empty($message) ? 'alert("' . $message . '")' : ''; ?>
+</script>
 <div class="overlay">
 <a class="CloseImg" title="Back" ></a>
-	<form name="input" action="" class="bt-formlogin" method="POST">
-			<h1>Login</h1>
-				<div class="bt-field">				
+    <form name="input" action="<?= $action ?>" class="bt-formlogin" method="POST">
+			<h1>ورود به سایت</h1>
+				<div class="bt-formicon">
+						
+				</div>			
 					<div class="bt-input-remember" id="bt-input-remember">
 						<input id="bt-checkbox-remember" class="bt-checkbox-remember" type="checkbox" name="remember" value="yes">
-							Remember Me					</div>	
-				</div>
+							مرا به خاطر بسپار					</div>	
+
 			<div class="bt-field">
 				<div class="bt-input">
-					<input id="input-username" type="text" value="Username" onfocus="if (this.value=='Username') this.value='';" onblur="if (this.value=='') this.value='Username';" name="username" autofocus>
+					<input id="input-username" type="text" value="نام کاربری" onfocus="if (this.value=='نام کاربری') this.value='';" onblur="if (this.value=='') this.value='نام کاربری';" name="username" autofocus>
 				</div>
 			</div>
 			<div class="bt-field">

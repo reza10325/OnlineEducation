@@ -3,7 +3,8 @@ class model extends datalayer{
 	protected $_table ;
 	protected $id ;
 	function __construct(){
-		$this->_table = get_class($this);
+        $this->_table = get_class($this);
+        parent::__construct();
 	}
 	function find(array $options = array()){
 		$options += array(

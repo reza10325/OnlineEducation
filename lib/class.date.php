@@ -1,16 +1,20 @@
 <?php 
 //strating persian date class "jdf"
-class pdate{
-	
+class date{
+
+	public static $gregorian_to_jalali;
+	public static $jdate_words;
+	public static $tr_num;
+		
 	//this function like date function in php
-	function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
+	public function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
 		
 	$T_sec=0;
 		if($time_zone!='local')date_default_timezone_set(($time_zone=='')?'Asia/Tehran':$time_zone);
  		$ts=$T_sec+(($timestamp=='' or $timestamp=='now')?time():tr_num($timestamp));
  		$date=explode('_',date('H_i_j_n_O_P_s_w_Y',$ts));
 	
- 	list($j_y,$j_m,$j_d)=$this->gregorian_to_jalali($date[8],$date[3],$date[2]);
+ 	list($j_y,$j_m,$j_d)=self::gregorian_to_jalali($date[8],$date[3],$date[2]);
 	$doy=($j_m<7)?(($j_m-1)*31)+$j_d-1:(($j_m-7)*30)+$j_d+185;
  	$kab=($j_y%33%4-1==(int)($j_y%33*.05))?1:0;
  	$sl=strlen($format);
@@ -62,15 +66,15 @@ class pdate{
 		break;
 	
 		case'D'://حرف اوّل نام روز هفته، ش=شنبه	
-			$out.=$this->jdate_words(array('kh'=>$date[7]),' ');
+			$out.=self::jdate_words(array('kh'=>$date[7]),' ');
 		break;
 	
 		case'f'://نام فصل با حروف فارسی	
-			$out.=$this->jdate_words(array('ff'=>$j_m),' ');
+			$out.=self::jdate_words(array('ff'=>$j_m),' ');
 		break;
 	
 		case'F'://نام ماه از سال - کامل	
-			$out.=$this->jdate_words(array('mm'=>$j_m),' ');
+			$out.=self::jdate_words(array('mm'=>$j_m),' ');
 		break;
 	
 		case'H'://ساعت در روز - ۲۴ساعته -۲رقمی	
@@ -86,19 +90,19 @@ class pdate{
 		break;
 	
 		case'J'://شماره ی روز از ماه به حروف	
-			$out.=$this->jdate_words(array('rr'=>$j_d),' ');
+			$out.=self::jdate_words(array('rr'=>$j_d),' ');
 		break;
 	
 		case'k';//(**.?) در صد باقیمانده از سال	
-			$out.=$this->tr_num(100-(int)($doy/($kab+365)*1000)/10,$tr_num);
+			$out.=self::tr_num(100-(int)($doy/($kab+365)*1000)/10,$tr_num);
 		break;
 	
 		case'K'://(**.?) در صد گذشته از سال	
-			$out.=$this->tr_num((int)($doy/($kab+365)*1000)/10,$tr_num);
+			$out.=self::tr_num((int)($doy/($kab+365)*1000)/10,$tr_num);
 		break;
 	
 		case'l'://نام روز در هفته - کامل	
-			$out.=$this->jdate_words(array('rh'=>$date[7]),' ');
+			$out.=self::jdate_words(array('rh'=>$date[7]),' ');
 		break;
 	
 		case'L'://سال : کبیسه=۱ و غیر کبیسه=۰	
@@ -110,7 +114,7 @@ class pdate{
 		break;
 	
 		case'M'://نام ماه از سال - خلاصه	
-			$out.=$this->jdate_words(array('km'=>$j_m),' ');
+			$out.=self::jdate_words(array('km'=>$j_m),' ');
 		break;
 	
 		case'n'://شماره ی ماه از سال - ۱یا۲رقمی	
@@ -140,7 +144,7 @@ class pdate{
 		break;
 	
 		case'r'://H:i:s O Y F j ,l :(ltr) ۲ قالب مرکّب	
-			$key=$this->jdate_words(array('rh'=>$date[7],'mm'=>$j_m));
+			$key=self::jdate_words(array('rh'=>$date[7],'mm'=>$j_m));
 			$out.=$date[0].':'.$date[1].':'.$date[6].' '.$date[4]
 			.' '.$key['rh'].'، '.$j_d.' '.$key['mm'].' '.$j_y;
 		break;
@@ -158,11 +162,11 @@ class pdate{
 		break;
 	
 		case'v'://سال به حروف - خلاصه ی دو رقمی	
-			$out.=$this->jdate_words(array('ss'=>substr($j_y,2,2)),' ');
+			$out.=self::jdate_words(array('ss'=>substr($j_y,2,2)),' ');
 		break;
 	
 		case'V'://سال به حروف - کامل	
-			$out.=$this->jdate_words(array('ss'=>$j_y),' ');
+			$out.=self::jdate_words(array('ss'=>$j_y),' ');
 		break;
 	
 		case'w'://شنبه=۰ ،عدد روز در هفته (IR)	
@@ -198,37 +202,37 @@ class pdate{
 		default:$out.=$sub;
 	  }
 	 }
- 		return($tr_num!='en')?$this->tr_num($out,'fa','.'):$out;
+ 		return($tr_num!='en')?self::tr_num($out,'fa','.'):$out;
 	}
 
 
     //this function like mktime function in php
-	function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$is_dst=-1){
-	 		$h=$this->tr_num($h);
-			$m=$this->tr_num($m);
-			$s=$this->tr_num($s);
-			$jm=$this->tr_num($jm);
-			$jd=$this->tr_num($jd);
-			$jy=$this->tr_num($jy);
+	public function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$is_dst=-1){
+	 		$h=self::tr_num($h);
+			$m=self::tr_num($m);
+			$s=self::tr_num($s);
+			$jm=self::tr_num($jm);
+			$jd=self::tr_num($jd);
+			$jy=self::tr_num($jy);
 	 			if($h=='' and $m=='' and $s=='' and $jm=='' and $jd=='' and $jy==''){
 				return mktime();
 				}else{
-				list($year,$month,$day)=$this->jalali_to_gregorian($jy,$jm,$jd);
+				list($year,$month,$day)=self::jalali_to_gregorian($jy,$jm,$jd);
 				return mktime($h,$m,$s,$month,$day,$year,$is_dst);
 	 			}
 	}
 	
 	//convert text and int or both ,Together
-	function tr_num($str,$mod='en',$mf='٫'){
+	public function tr_num($str,$mod='en',$mf='٫'){
 		$num_a=array('0','1','2','3','4','5','6','7','8','9','.');
 	 	$key_a=array('۰','۱','۲','۳','۴','۵','۶','۷','۸','۹',$mf);
 	 	return($mod=='fa')?str_replace($num_a,$key_a,$str):str_replace($key_a,$num_a,$str);
 	}
 	
 	//Get the date and time values ​​into words in Farsi
-	function jdate_words($array,$mod=''){
+	public function jdate_words($array,$mod=''){
 	 	foreach($array as $type=>$num){
-	  	$num=(int)$this->tr_num($num);
+	  	$num=(int)self::tr_num($num);
 			
 	  		switch($type){
 				case'ss':
@@ -293,7 +297,7 @@ class pdate{
 
 
     //convert gregorian date value to jalali date
-   	function gregorian_to_jalali($g_y,$g_m,$g_d,$mod=''){
+   	public function gregorian_to_jalali($g_y,$g_m,$g_d,$mod=''){
 	 //$g_y=tr_num($g_y); $g_m=tr_num($g_m); $g_d=tr_num($g_d);/* <= :اين سطر ، جزء تابع اصلي نيست */
  		$d_4=$g_y%4;
 	 	$g_a=array(0,0,31,59,90,120,151,181,212,243,273,304,334);
@@ -316,6 +320,9 @@ class pdate{
 	 return($mod=='')?array($jy,$jm,$jd):$jy.$mod.$jm.$mod.$jd;
 	}
 
-
-
 }
+/*test
+
+ * echo date::jdate('Y/n/j');
+
+*/
