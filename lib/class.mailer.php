@@ -1,11 +1,16 @@
 <?php
-
+/*
+ *  Mailer class with use PHPMailer
+ */
 class mailer{
 	function __construct(){
 		require './PHPMailer_5.2.4/class.phpmailer.php';
 	}
+	/*
+	 * Use Like => mailer :: sendMail('tets' , 'student@example.com , 'body for mail' , 'no attach');
+	 */
 
-	function mailer($Subject,$To,$Cc,$Bcc,$body,$Attach){
+	static function sendMail($Subject , $To = array() , $Cc , $Bcc , $body , $Attach = array()){
 		$mail = new PHPMailer;
 		
 		$mail->IsSMTP();                                                 // Set mailer to use SMTP
