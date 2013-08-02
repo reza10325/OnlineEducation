@@ -12,7 +12,7 @@ class Captcha {
 	private $_height = 80; // image height
 	private $_fontSize = 18; // captcha font size. default 18
 	private $_fontFile = "../view/font/arial.ttf";
-	private $_bg = array( 'R' => 50, 'G' => 50, 'B' => 50); // default - white background
+	private $_bg = array( 'R' => 50, 'G' => 50, 'B' => 50 ); // default - white background
 	private $_textColor = array( 'R' => 0, 'G' => 0, 'B' => 0); // default - black text
 	private $_lineColor = array( 'R' => 255, 'G' => 255, 'B' => 255); // default - line color
  
