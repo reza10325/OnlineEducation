@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
-<window height="776" maximized="true" width="1200" x="49" y="24">
+<window height="446" maximized="true" width="1196" x="84" y="388">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -17,6 +17,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="84" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="com.aptana.editor.php" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -25,10 +26,16 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor activePart="true" focus="true" id="com.aptana.editor.php" name="class.mailer.php" partName="class.mailer.php" title="class.mailer.php" tooltip="/home/hossein/www/OnlineEducation/lib/class.mailer.php" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/hossein/www/OnlineEducation/lib/class.mailer.php"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
@@ -61,7 +68,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="com.aptana.ui.WebPerspective">
+<perspectives activePart="com.aptana.editor.php" activePerspective="com.aptana.ui.WebPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.aptana.ui.internal.WebPerspectiveFactory" id="com.aptana.ui.WebPerspective" label="Web"/>
 <alwaysOnActionSet id="com.aptana.browser.actionSet"/>
@@ -162,7 +169,68 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" uri="file:/home/hossein/www/OnlineEducation/lib/class.debugger.php"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" uri="file:/home/hossein/www/Test/b.php"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" uri="file:/home/hossein/www/OnlineEducation/lib/class.controller.php"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" uri="file:/home/hossein/www/OnlineEducation/bootstrap.php"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" uri="file:/home/hossein/www/OnlineEducation/config.php"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" uri="file:/home/hossein/www/OnlineEducation/lib/class.mailer.php"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" uri="file:/home/hossein/www/OnlineEducation/lib/class.date.php"/>
+</editors>
+<item historyLabel="class.debugger.php" index="0">
+<position info="not_deleted" x="436" y="90"/>
+</item>
+<item historyLabel="b.php" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="class.debugger.php" index="0">
+<position info="not_deleted" x="542" y="0"/>
+</item>
+<item historyLabel="class.controller.php" index="2">
+<position info="not_deleted" x="544" y="0"/>
+</item>
+<item historyLabel="class.debugger.php" index="0">
+<position info="not_deleted" x="461" y="0"/>
+</item>
+<item historyLabel="bootstrap.php" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="config.php" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="class.debugger.php" index="0">
+<position info="not_deleted" x="461" y="0"/>
+</item>
+<item historyLabel="config.php" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="bootstrap.php" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="config.php" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="bootstrap.php" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="config.php" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="class.debugger.php" index="0">
+<position info="not_deleted" x="461" y="0"/>
+</item>
+<item historyLabel="class.mailer.php" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="class.date.php" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="class.mailer.php" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -178,5 +246,27 @@
 </trimArea>
 </trimLayout>
 </window>
-<mruList/>
+<mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" name="class.date.php" tooltip="/home/hossein/www/OnlineEducation/lib/class.date.php">
+<persistable uri="file:/home/hossein/www/OnlineEducation/lib/class.date.php"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" name="class.mailer.php" tooltip="/home/hossein/www/OnlineEducation/lib/class.mailer.php">
+<persistable uri="file:/home/hossein/www/OnlineEducation/lib/class.mailer.php"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" name="config.php" tooltip="/home/hossein/www/OnlineEducation/config.php">
+<persistable uri="file:/home/hossein/www/OnlineEducation/config.php"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" name="bootstrap.php" tooltip="/home/hossein/www/OnlineEducation/bootstrap.php">
+<persistable uri="file:/home/hossein/www/OnlineEducation/bootstrap.php"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" name="class.controller.php" tooltip="/home/hossein/www/OnlineEducation/lib/class.controller.php">
+<persistable uri="file:/home/hossein/www/OnlineEducation/lib/class.controller.php"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" name="b.php" tooltip="/home/hossein/www/Test/b.php">
+<persistable uri="file:/home/hossein/www/Test/b.php"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.php" name="class.debugger.php" tooltip="/home/hossein/www/OnlineEducation/lib/class.debugger.php">
+<persistable uri="file:/home/hossein/www/OnlineEducation/lib/class.debugger.php"/>
+</file>
+</mruList>
 </workbench>
