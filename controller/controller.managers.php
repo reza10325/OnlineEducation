@@ -1,7 +1,6 @@
 <?php
 
 class controller_managers extends controller{
-	
 	function __construct(){
 		$this->filter(array(
 			'username' => FILTER_SANITIZE_MAGIC_QUOTES,
@@ -23,7 +22,6 @@ class controller_managers extends controller{
 			$auth = managers::login($this->input['username'],$this->input['password'],!empty($this->input['save']));
             if($auth){
                 redirect(html::generateLink('managers'));
-//				return $this->index();
 			}
 		}
 		return $this->login('invalid user or pass');

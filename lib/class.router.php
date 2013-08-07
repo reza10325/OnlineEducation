@@ -6,7 +6,7 @@ class router {
         '{params}' => '?([\w/\s]*)'
     );
 
-    static function connect($rout, $callback){
+    static function connect($rout, $callback = null){
         $section = array(
             '{controller}' => null ,
             '{action}' => null,

@@ -1,11 +1,12 @@
 <?php
 class controller_users extends controller{
-	function userdata(){
-        print 's';
-        /*$users = new users();
-        $user_data = $users->userdata();
-         */
-		//$this->render('usersa',compact('user_data'));
+	function __construct(){
+		$this->filter(array(
+			'username' => FILTER_SANITIZE_MAGIC_QUOTES,
+			'password' => FILTER_SANITIZE_STRING,
+			'save' => FILTER_SANITIZE_STRING,
+			'type' => FILTER_SANITIZE_STRING,
+		));
 	}
 	function register(){
 		if(isset($_POST[submit]){
@@ -61,4 +62,3 @@ class controller_users extends controller{
 		}
 	}
 }
-?>

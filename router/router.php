@@ -6,11 +6,8 @@ router::connect('error/404',function(){
     exit;
 });
 
-router::connect('{controller}/{action}/{params}',function(){
-	//print 'Router main';
-});
-
-//print 'sad';
+router::connect('{controller}/{action}/{params}');
+router::connect('');
 header('Location: '. html::mainRoot() .'/error/404');
 return;
 ?>

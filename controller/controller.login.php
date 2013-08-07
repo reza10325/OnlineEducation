@@ -3,9 +3,14 @@ class controller_login extends controller{
     function index(){
         return $this->user();
     }
-    function user(){
-        $action = html::generateLink('user', 'check_login');
-        $this->render('login', compact('action'));
+    function user($msg = ''){
+        if(users::isOnline()){
+            redirect(html::generateLink('users'));
+            return true;
+        }
+        $action = html::generateLink('users','check_login');
+        $message = $msg;
+        $this->render('login', compact('action','message'));
     }
     function admin($msg = ''){
         if(managers::isOnline()){
