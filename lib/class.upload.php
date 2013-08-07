@@ -3,8 +3,6 @@
 		var $file;
 		var $name ='';
 		var $type;
-		//var $file_name; // part a of $_FILES[a][b]
-		//var $submit_name;
 		var $folder;
 		var $allowed=array();
 		function set_name($n){
@@ -24,10 +22,12 @@
 					&& is_uploaded_file( $this -> file['tmp_name'])
 					&& in_array($this -> type , $this->allowed)){				
 					$path= $this -> folder != '' ? VIEW . DS . 'upload' . DS . $this->folder. DS .$this -> name :
-												VIEW . DS . 'upload' . DS . $this -> name; 
+											VIEW . DS . 'upload' . DS . $this -> name; 
 			}
-			if (move_uploaded_file($this -> file['tmp_name'], $path)){
-				return $path;
+			if(file_existst ($path){
+				if (move_uploaded_file($this -> file['tmp_name'], $path)){
+					return $path;
+				}
 			}
 			return false; 
 		}

@@ -24,5 +24,15 @@ class users extends model{
 	function setCookie(){
 		//......
 	}
+	static function register($info){
+		global $mysql;
+		$info['password'] = encrypt::md5($origin_pass);
+		$info['password2'] = encrypt::md5($origin_pass);
+		$mysql->insert("users", $info);
+		if($mysql->affected_rows()>0){
+			return true;
+		}
+		return false;
+	}
 }
 ?>
