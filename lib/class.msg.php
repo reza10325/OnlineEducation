@@ -6,9 +6,9 @@ class msg {
 		session::set($name,$val);
 	}
 	
-	static function get($name){
+	static function get($name = 'defualt'){
 		$msg=session::get($name);
-		$msg = isset($msg) ? $msg : null;
+		$msg = !empty($msg) ? $msg : null;
 		session::delete($name);
 		return $msg;
 	}
