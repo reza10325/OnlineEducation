@@ -1,13 +1,6 @@
-/*
-*$cap = new Captcha(); // instantiate Captcha class
-*$cap->setBGColor(255,0,0);  // sets background color of image
-*$cap->setTextColor(0,255,0); // sets the text color
-*$cap->setSize(100,40); // sets the image size. 
-*$cap->show(); // outputs captcha image.
-*/
 <?php
 
-class Captcha {
+class captcha {
 	private $_width = 200; // image width
 	private $_height = 80; // image height
 	private $_fontSize = 18; // captcha font size. default 18
@@ -15,7 +8,9 @@ class Captcha {
 	private $_bg = array( 'R' => 50, 'G' => 50, 'B' => 50 ); // default - white background
 	private $_textColor = array( 'R' => 0, 'G' => 0, 'B' => 0); // default - black text
 	private $_lineColor = array( 'R' => 255, 'G' => 255, 'B' => 255); // default - line color
- 
+ 	public function __construct(){
+ 		$this->_fontFile = VIEW . '/font/arial.ttf';
+ 	}
 	public function show() {
 		$sec_code = $this->generateSecurityCode();
 		$img = @imagecreatetruecolor($this->_width, $this->_height);
@@ -50,7 +45,8 @@ class Captcha {
 	function generateSecurityCode() {
 	 	$md5_hash = md5(rand(0,999)); 
 		$security_code = substr($md5_hash, 15, 6); 
-		$_SESSION["sec_code"] = $security_code;
+		//$_SESSION["sec_code"] = $security_code;
+		session::set('sec_code', $security_code);
 		return $security_code;
 	}
 	 

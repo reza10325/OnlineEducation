@@ -15,12 +15,12 @@ abstract class controller{
 		}
 		if(!$ajax){
 			html::addJs('jquery');
-			html::addCss('main');
 		}
 		ob_start();
 		include $file;
 		$content = ob_get_contents();
 		ob_end_clean();
+		
 		if(!$ajax){
 			include $header;
 		}

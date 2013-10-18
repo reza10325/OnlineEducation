@@ -24,7 +24,7 @@
 					$path= $this -> folder != '' ? VIEW . DS . 'upload' . DS . $this->folder. DS .$this -> name :
 											VIEW . DS . 'upload' . DS . $this -> name; 
 			}
-			if(file_existst ($path){
+			if(file_existst ($path)){
 				if (move_uploaded_file($this -> file['tmp_name'], $path)){
 					return $path;
 				}

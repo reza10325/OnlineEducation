@@ -1,5 +1,12 @@
 <?php
 class users extends model{
+	static function singletone() {
+		static $instance;
+		if(empty($instance)) {
+			$instance = new self();
+		}
+		return $instance;
+	}
 	function userdata(){
 		$this->id = 1;
 		return $this->find();
@@ -24,15 +31,18 @@ class users extends model{
 	function setCookie(){
 		//......
 	}
-	static function register($info){
-		global $mysql;
-		$info['password'] = encrypt::md5($origin_pass);
-		$info['password2'] = encrypt::md5($origin_pass);
-		$mysql->insert("users", $info);
-		if($mysql->affected_rows()>0){
-			return true;
-		}
-		return false;
+	function isOnline(){
+		return !empty($_SESSION['users_id']) ? $_SESSION['users_id'] : false;
 	}
+	private function register($info){
+		$info['password'] = encrypt::md5($info['password']);
+		$this->insert($info);
+		return true;
+	}
+	static function __callstatic($func,$arg){
+		$object = self::singletone();
+		return call_user_func_array(array($object,$func), $arg);
+	}
+	
 }
 ?>

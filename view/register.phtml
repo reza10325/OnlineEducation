@@ -1,7 +1,7 @@
 <?php html::addCss('register');?>
 <div class="overlay">
 <a class="CloseImg" title="Back" ></a>
-	<form name="input" action="" class="register-frm" method="POST" >
+	<form name="input" action="<?php print html::generateLink('register','register')?>" class="register-frm" method="POST" >
 			<h1> فرم عضویت در سایت</h1>
 			<h4> پر کردن فیلدهای ستاره دار (*) اجباری می باشد.</h1>
 			<div class="bt-field">
@@ -40,7 +40,7 @@
 			</div>
 			<div class="bt-field">
 				<div class="bt-input">
-					رمز عبور* <input id="input-password" type="password" value="" placeholder="******" name="password1" alt="password" required>
+					رمز عبور* <input id="input-password" type="password" value="" placeholder="******" name="password" alt="password" required>
 				</div>
 			</div>
 			<div class="bt-field">
@@ -56,6 +56,11 @@
 			<div class="bt-field">
 				<div class="bt-input">
 					تلفن همراه <input id="input-mobile" pattern="[0-9]{11}" type="text" value="" placeholder="09xxxxxxxxx"  name="Mobile" required>
+				</div>
+			</div>
+			<div class="bt-field">
+				<div class="bt-input">
+					عکس امنیتی <img src="<?= html::generateLink('main','captcha', array('t' => time())) ?>" /><input id="input-mobile" type="text" value="" placeholder="09xxxxxxxxx"  name="Mobile" required>
 				</div>
 			</div>
 			<div class="bt-field">

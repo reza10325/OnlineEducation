@@ -2,8 +2,9 @@
 class msg {
 	static public $val;
 	static public $name;
-	static function set($name = 'defualt',$val){
+	static function set($val,$name = 'defualt'){
 		session::set($name,$val);
+		
 	}
 	
 	static function get($name = 'defualt'){
